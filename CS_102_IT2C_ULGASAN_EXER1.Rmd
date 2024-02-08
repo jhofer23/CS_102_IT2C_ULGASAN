@@ -1,0 +1,97 @@
+---
+title: "LabExer1"
+output: pdf_document
+date: "2024-02-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+install.packages("rvest")
+install.packages("dplyr")
+install.packages("polite")
+install.packages("tidyverse")
+install.packages("usethis")
+
+library(rvest)
+library(dplyr)
+library(polite)
+library(tidyverse)
+
+```
+
+```{r}
+library(rvest)
+library(dplyr)
+library(polite)
+
+url <-"https://www.amazon.com/s?k=whey+protein+powder&crid=3ETM5W1STQFYU&sprefix=%2Caps%2C405&ref=nb_sb_ss_recent_1_0_recent"
+
+session <- bow(url,user_agent = "For Educational Purposes Only")
+
+amazon_page<-read_html(url)
+
+whey_pro <-amazon_page %>%
+  html_nodes("span.a-text-normal")%>%
+  html_text()
+whey_pro
+
+wheylist50 <- whey_pro[2:55]
+wheylist50
+
+whey_prices <- amazon_page %>%
+  html_nodes("span.a-price-whole")%>%
+  html_text
+whey_prices  
+
+
+whey_Ratings <- amazon_page %>%
+  html_nodes("span.a-section.a-spacing-none.a-spacing-top-micro")%>%
+  html_text
+whey_Ratings
+
+
+whey_noReviews <- amazon_page %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+whey_noReviews
+
+
+```
+
+
+```{r}
+
+url <- "https://www.amazon.co.uk/s?k=slides&page=2&crid=38UVNRLWHLBX&qid=1707354108&sprefix=slid%2Caps%2C500&ref=sr_pg_1"
+
+session <- bow(url,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+
+
+slides <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+slides
+slides44 <- slides[1:44]
+slides44
+
+slides_prices2 <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+slides_prices2
+
+slides_Ratings2 <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+slides_Ratings2
+
+slides_noReviews2 <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+slides_noReviews2
+```
+
