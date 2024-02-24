@@ -1,6 +1,10 @@
 ---
 title: "LabExercise2"
-output: word_document
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
 date: "2024-02-18"
 ---
 
@@ -51,7 +55,7 @@ for (page in 1:5) {
   
 }
 
-View(product_1)
+#View(product_1)
 
 
 ```
@@ -102,7 +106,7 @@ for (page in 1:5) {
  
 }
 
-View(product_2)
+#View(product_2)
 
 ```
 
@@ -120,7 +124,7 @@ product_3 <- data.frame()
 
 for (page in 1:5) {
   url3 <- paste0("https://www.amazon.co.uk/JanSport-SuperBreak-Large-Backpack-Graphite/product-reviews/B0B1V81NL2/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
-  session3 <- bow(link3, user_agent = "Educational Purpose")
+  session3 <- bow(url3, user_agent = "Educational Purpose")
 
   scrapeNodes <- function(selector) {
     scrape(session3) %>%
@@ -149,7 +153,7 @@ for (page in 1:5) {
 
 }
 
-View(product_3)
+#View(product_3)
 ```
 
 
@@ -195,7 +199,7 @@ for (page in 1:5) {
   ))
 }
 
-View(product_4)
+#View(product_4)
 
 ```
 5thprodcut
@@ -242,7 +246,7 @@ for (page in 1:5) {
   
 }
 
-View(product_5)
+#View(product_5)
 ```
 6thproduct
 
@@ -288,7 +292,7 @@ for (page in 1:5) {
 
 }
 
-View(product_6)
+#View(product_6)
 
 ```
 
@@ -335,7 +339,7 @@ for (page in 1:5) {
 
 }
 
-View(product_7)
+#View(product_7)
 
 ```
 
@@ -382,7 +386,7 @@ for (page in 1:5) {
   Sys.sleep(3)
 }
 
-View(product_8)
+#View(product_8)
 ```
 9thproduct
 Vans Unisex Alumni Pack 5 Backpack (pack of 1)
@@ -427,7 +431,7 @@ for (page in 1:5) {
 
 }
 
-View(product_9)
+#View(product_9)
 
 
 ```
@@ -474,7 +478,7 @@ for (page in 1:5) {
 
 }
 
-View(product_10)
+#View(product_10)
 ```
 
 11thproduct
@@ -520,7 +524,7 @@ for (page in 1:2) {
   
 }
 
-View(product_11)
+#View(product_11)
 ```
 12thproduct
 JANSPORT Big Student, Large Backpack, Red Tape, 34 L, 43 x 33 x 25 cm, 15 in laptop compartment
@@ -564,7 +568,7 @@ for (page in 1:2) {
  
 }
 
-View(product_12)
+#View(product_12)
 ```
 13thproduct
 JanSport Cool Student
@@ -608,7 +612,7 @@ for (page in 1:5) {
   
 }
 
-View(product_13)
+#View(product_13)
 ```
 14thproduct
 
@@ -652,7 +656,7 @@ for (page in 3:7) {
  
 }
 
-View(product_14)
+#View(product_14)
 ```
 
 
@@ -699,5 +703,1724 @@ url15 <- paste0("https://www.amazon.co.uk/KROSER-15-6-17-3-Water-Repellent-Headp
 
 }
 
-View(product_15)
+#View(product_15)
+```
+16thproduct
+MATEIN Travel Laptop Backpack, Business Anti Theft Slim Durable Laptops Backpack with USB Charging Port, Water Resistant College School Computer Bag Gift for Men & Women Fits 15.6 Inch Notebook, Grey
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_16 <- data.frame()
+
+for (page in 1:10) {
+url16<- paste0("https://www.amazon.com/Backpack-Business-Charging-Resistant-Computer/product-reviews/B06XZTZ7GB/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session16 <- bow(url16, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session16) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "MATEIN Travel Laptop Backpack, Business Anti Theft Slim Durable Laptops Backpack with USB Charging Port, Water Resistant College School Computer Bag Gift for Men & Women Fits 15.6 Inch Notebook, Grey"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_16 <- rbind(product_16, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_16)
+```
+
+17thproduct
+Nicole Miller Travel Laptop Backpack-Business Anti Theft Vintage Backpack with USB Charging Port-Water Resistant Computer Bag
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_17 <- data.frame()
+
+for (page in 1:5) {
+url17<- paste0("https://www.amazon.com/Miller-Backpack-Business-Backpack-Port-Water-Resistant/product-reviews/B0C33T61BV/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session17 <- bow(url17, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session17) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Nicole Miller Travel Laptop Backpack-Business Anti Theft Vintage Backpack with USB Charging Port-Water Resistant Computer Bag"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_17 <- rbind(product_17, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_17)
+
+
+
+```
+
+18thproduct
+CYUREAY Convertible Backpack Tote Women Laptop Daypack Water Resistant Casual Backpack for Work Computer Fits 15.6-Inch Laptop & Tablet, Green
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_18 <- data.frame()
+
+for (page in 1:5) {
+url18<- paste0("https://www.amazon.com/Convertible-Backpack-Resistant-Computer-15-6-Inch/product-reviews/B09Y1GYQBH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session18 <- bow(url18, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session18) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "CYUREAY Convertible Backpack Tote Women Laptop Daypack Water Resistant Casual Backpack for Work Computer Fits 15.6-Inch Laptop & Tablet, Green"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_18 <- rbind(product_18, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_18)
+
+
+```
+
+19thproduct
+CYUREAY Convertible Backpack Tote Women Laptop Daypack Water Resistant Casual Backpack for Work Computer Fits 15.6-Inch Laptop & Tablet, Green
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_19 <- data.frame()
+
+for (page in 1:5) {
+url19<- paste0("https://www.amazon.com/Convertible-Backpack-Resistant-Computer-15-6-Inch/product-reviews/B09Y1GYQBH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session19 <- bow(url19, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session19) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "CYUREAY Convertible Backpack Tote Women Laptop Daypack Water Resistant Casual Backpack for Work Computer Fits 15.6-Inch Laptop & Tablet, Green"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_19 <- rbind(product_19, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_19)
+
+
+```
+
+
+20thproduct
+
+CYUREAY Laptop Backpack for Women Fashion Travel Backpacks 15.6 Inch Laptop Bag with USB Port Teacher Nurse Vintage Daypacks for Work,Pink
+
+```{r}
+
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_20 <- data.frame()
+
+for (page in 1:5) {
+url20<- paste0("https://www.amazon.com/CYUREAY-College-Students-Backpack-Spacious/product-reviews/B0BHWH15DP/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session20 <- bow(url20, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session20) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "CYUREAY Laptop Backpack for Women Fashion Travel Backpacks 15.6 Inch Laptop Bag with USB Port Teacher Nurse Vintage Daypacks for Work,Pink"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_20 <- rbind(product_20, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_20)
+```
+21st product
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_21 <- data.frame()
+
+for (page in 1:5) {
+url21<- paste0("https://www.amazon.com/LXY-Leather-Backpack-Vintage-Charging/product-reviews/B0BK8Q642Q/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session21 <- bow(url21, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session21) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "LXY Vegan Leather Backpack Vintage Laptop Bookbag for Women Men, Brown Faux Leather Backpack Purse Bookbag Weekend Travel Daypack"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_21 <- rbind(product_21, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_21)
+
+```
+
+
+22ndproduct
+Kah&Kee Faux-Leather Backpack Diaper Bag with Laptop Compartment Travel School for Women Man
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_22 <- data.frame()
+
+for (page in 1:5) {
+url22<- paste0("https://www.amazon.com/Kah-Kee-Leather-Backpack-Compartment/product-reviews/B07CYZCV7Q/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session22 <- bow(url22, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session22) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Kah&Kee Faux-Leather Backpack Diaper Bag with Laptop Compartment Travel School for Women Man"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_22 <- rbind(product_22, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_22)
+
+```
+23rdproduct
+Kah&Kee City Backpack-14 Inch Laptop Backpack for Women Medium Work,Teacher Backpack-Simple, Casual Daypack Backpacks (Beige)
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_23 <- data.frame()
+
+for (page in 1:5) {
+url23<- paste0("https://amazon.com/Kah-Kee-Backpack-14-Backpack-Simple-Backpacks/product-reviews/B0CJ36341Y/ref=cm_cr_dp_d_show_all_btm_next", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session23 <- bow(url23, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session23) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Kah&Kee City Backpack-14 Inch Laptop Backpack for Women Medium Work,Teacher Backpack-Simple, Casual Daypack Backpacks (Beige)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_23 <- rbind(product_23, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_23)
+
+
+
+```
+24thproduct
+MAH Travel Laptop Backpack, 15.6 Inch Casual Daypack for Men Women, Water Resistant Business College Bookbag-
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_24 <- data.frame()
+
+for (page in 1:5) {
+url24<- paste0("https://www.amazon.com/MAH-Backpack-Daypack-Resistant-Business/product-reviews/B09CTFB87H/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session24 <- bow(url24, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session24) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "MAH Travel Laptop Backpack, 15.6 Inch Casual Daypack for Men Women, Water Resistant Business College Bookbag"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_24 <- rbind(product_24, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_24)
+
+
+```
+
+25th_product
+G-FAVOR Laptop Backpack for Men, Business Travel Backpack, Water-resistant Expandable Computer Backpack with USB Charging Port, for 15.6 inch Laptop Bag
+
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_25 <- data.frame()
+
+for (page in 1:5) {
+url25<- paste0("https://www.amazon.com/G-FAVOR-Business-Backpack-Resistant-Expandable/product-reviews/B0BWRJKXBN/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session25 <- bow(url25, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session25) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "G-FAVOR Laptop Backpack for Men, Business Travel Backpack, Water-resistant Expandable Computer Backpack with USB Charging Port, for 15.6 inch Laptop Bag"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_25 <- rbind(product_25, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+Sys.sleep(3)
+}
+
+#View(product_25)
+
+
+
+```
+
+
+26thproduct
+G-FAVOR 40L Travel Backpack, Vintage Canvas Rucksack Convertible Duffel Bag Carry On Backpack Fit for 17.3 Inch Laptop Bag
+
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_26 <- data.frame()
+
+for (page in 1:5) {
+url26<- paste0("https://www.amazon.com/G-FAVOR-Backpack-Rucksack-Convertible-Approved/product-reviews/B08T6CYWXV/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session26 <- bow(url26, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session26) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "G-FAVOR 40L Travel Backpack, Vintage Canvas Rucksack Convertible Duffel Bag Carry On Backpack Fit for 17.3 Inch Laptop Bag"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_26 <- rbind(product_26, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+Sys.sleep(3)
+}
+
+#View(product_26)
+```
+
+27thproduct
+WITZMAN Carry On Travel Backpack for Men Women USB Charging Port Large Luggage Backpack Bag Airline Approved
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_27 <- data.frame()
+
+for (page in 1:5) {
+url27<- paste0("https://www.amazon.com/WITZMAN-Backpack-Charging-Approved-B686/product-reviews/B0CC8D9WKP/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session27 <- bow(url27, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session27) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "WITZMAN Carry On Travel Backpack for Men Women USB Charging Port Large Luggage Backpack Bag Airline Approved"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_27 <- rbind(product_27, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+Sys.sleep(3)
+}
+
+#View(product_27)
+
+
+```
+
+
+28thproduct
+WITZMAN Canvas Backpack Large Carry On Travel Backpack Duffel Bag Fit 18 inch Laptop for Men Women(A6617-3 Army Green)
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_28 <- data.frame()
+
+for (page in 1:5) {
+url28<- paste0("https://www.amazon.com/WITZMAN-Canvas-Backpack-Travel-A6617-3/product-reviews/B0C4NFD33B/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session28 <- bow(url28, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session28) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "WITZMAN Canvas Backpack Large Carry On Travel Backpack Duffel Bag Fit 18 inch Laptop for Men Women(A6617-3 Army Green)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_28 <- rbind(product_28, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_28)
+
+
+
+```
+
+29thproduct
+WITZMAN Travel Backpack for Men Carry On Backpack Duffel Bag Large Capacity Laptop Backpack 17 Inch (6695 Black)
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_29 <- data.frame()
+
+for (page in 1:5) {
+url29<- paste0("https://www.amazon.com/WITZMAN-Outdoor-Backpack-Rucksack-6695/product-reviews/B06XRYR2KF/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session29 <- bow(url29, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session29) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "WITZMAN Travel Backpack for Men Carry On Backpack Duffel Bag Large Capacity Laptop Backpack 17 Inch (6695 Black)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_29 <- rbind(product_29, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_29)
+
+
+
+```
+
+
+30thproduct
+
+
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_30 <- data.frame()
+
+for (page in 1:5) {
+url30<- paste0("https://www.amazon.com/KEOFID-classic-backpack-charging-resistent/product-reviews/B0BG85X8X5/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session30 <- bow(url30, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session30) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "classic carry-on travel backpack for men and women, Anti theft laptop backpack with USB charging port for work, large backpack for college, water resistent, gift choice(BLACK)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_30 <- rbind(product_30, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_30)
+
+```
+31st product
+VGCUB Large Travel Work Business Backpack Carry on Flight Approved Laptop Backpack for Women Men Mochila de Viaje
+```{r}
+
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_31 <- data.frame()
+
+for (page in 1:5) {
+url31<- paste0("https://www.amazon.com/VGCUB-Backpack-Personal-Waterproof-Compartment/product-reviews/B0CDLG6ZX4/ref=cm_cr_dp_d_show_all_btm_next", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session31 <- bow(url31, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session31) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "VGCUB Large Travel Work Business Backpack Carry on Flight Approved Laptop Backpack for Women Men Mochila de Viaje"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_31 <- rbind(product_31, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_31)
+
+```
+
+product32nd
+
+Travel Backpack for Men Women, Carry on Backpack Flight Approved, Personal Item Backpack Bag on Airplanes,Backpacks for Traveling, Travel Essentials,Dark Green
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_32 <- data.frame()
+
+for (page in 1:5) {
+url32<- paste0("https://www.amazon.com/Rinlist-Backpack-Flight-approved-Traveling-Essentials/product-reviews/B0C8CVJTTH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session32 <- bow(url32, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session32) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Travel Backpack for Men Women, Carry on Backpack Flight Approved, Personal Item Backpack Bag on Airplanes,Backpacks for Traveling, Travel Essentials,Dark Green"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_32 <- rbind(product_32, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_32)
+
+
+
+```
+33rdproduct
+Travel Backpack for Women, Carry On Backpack Airline Approved Personal Item, Waterproof Backpack, Backpack for Women, 17.3” Laptop Backpack, College Bag Casual Daypack for Weekender Hiking
+```{r}
+
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_33 <- data.frame()
+
+for (page in 1:5) {
+url33<- paste0("https://www.amazon.com/Snoffic-TSA-Friendly-Waterproof-Weekender-Traveling/product-reviews/B0BX3QGQ1R/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session33 <- bow(url33, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session33) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Travel Backpack for Women, Carry On Backpack Airline Approved Personal Item, Waterproof Backpack, Backpack for Women, 17.3” Laptop Backpack, College Bag Casual Daypack for Weekender Hiking"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_33 <- rbind(product_33, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_33)
+
+```
+
+34thproduct
+Travel Backpack Carry on Travel Bag Airline Approved 45L Traveling Laptop Back Pack Flappable Traveling Pack with Stowable Shoulder Straps and Hip Belt Men Women
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_34 <- data.frame()
+
+for (page in 1:5) {
+url34<- paste0("https://www.amazon.com/HUNTIT-Backpack-Approved-Traveling-Flappable/product-reviews/B0CQXF12NR/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session34 <- bow(url34, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session34) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Travel Backpack Carry on Travel Bag Airline Approved 45L Traveling Laptop Back Pack Flappable Traveling Pack with Stowable Shoulder Straps and Hip Belt Men Women"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_34 <- rbind(product_34, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_34)
+
+
+```
+
+35thproduct
+Carry on Backpack, Extra Large 50L Airline Approved TSA Travel Backpacks with 3 Packing Cubes for Women Men, USB Charging Expandable Overnight Luggage Daypack Business Suitcase Backpack
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_35 <- data.frame()
+
+for (page in 1:5) {
+url35<- paste0("https://www.amazon.com/Backpack-Expandable-Backpacks-Anti-Theft-Weekender/product-reviews/B09ZPD235H/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session35 <- bow(url35, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session35) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Carry on Backpack, Extra Large 50L Airline Approved TSA Travel Backpacks with 3 Packing Cubes for Women Men, USB Charging Expandable Overnight Luggage Daypack Business Suitcase Backpack"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_35 <- rbind(product_35, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_35)
+
+
+```
+
+36thproduct
+Amazon Basics Ergonomic Backpack, Grey
+```{r}
+
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_36 <- data.frame()
+
+for (page in 1:5) {
+url36<- paste0("https://www.amazon.com/AmazonBasics-NC1708190R2H-Ergonomic-Backpack-Grey/product-reviews/B07FF42X4T/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session36 <- bow(url36, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session36) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Amazon Basics Ergonomic Backpack, Grey"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_36 <- rbind(product_36, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_36)
+
+
+
+```
+
+37thproduct
+Amazon Basics Sport Laptop Backpack - Graphit
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_37 <- data.frame()
+
+for (page in 1:5) {
+url37<- paste0("https://www.amazon.com/AmazonBasics-ZH1802045R3-Sports-Backpack-Graphite/product-reviews/B07D7XKJ1S/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session37 <- bow(url37, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session37) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Amazon Basics Sport Laptop Backpack - Graphite"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_37 <- rbind(product_37, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_37)
+
+
+```
+
+38thproduct
+Amazon Basics Sport Laptop Backpack - Graphite
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_38 <- data.frame()
+
+for (page in 1:5) {
+url38<- paste0("https://www.amazon.com/AmazonBasics-ZH1802045R3-Sports-Backpack-Graphite/product-reviews/B07D7XKJ1S/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session38 <- bow(url38, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session38) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Amazon Basics Sport Laptop Backpack - Graphite"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_38 <- rbind(product_38, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_38)
+
+
+```
+
+
+39thproduct
+Backpack Bookbag for College Laptop Travel,Fit Laptop Up to 15.6 inch Multi Compartment with USB Charging Port Anti theft, Gift for Men Women (Purple
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_39 <- data.frame()
+
+for (page in 1:5) {
+url39<- paste0("https://www.amazon.com/Backpack-Business-Charging-Resistant-Reflective/product-reviews/B07CZX3YD7/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session39 <- bow(url39, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session39) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Backpack Bookbag for College Laptop Travel,Fit Laptop Up to 15.6 inch Multi Compartment with USB Charging Port Anti theft, Gift for Men Women (Purple"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_39 <- rbind(product_39, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_39)
+
+
+```
+
+
+
+40thproduct
+
+abshoo Classical Basic Travel Backpack For School Water Resistant Bookbag
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_40 <- data.frame()
+
+for (page in 1:5) {
+url40<- paste0("https://www.amazon.com/Classical-Backpack-Bookbag-College-Charging/product-reviews/B08GBYQWXS/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session40 <- bow(url40, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session40) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "abshoo Classical Basic Travel Backpack For School Water Resistant Bookbag"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_40 <- rbind(product_40, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_40)
+
+
+```
+
+
+41stproduct
+Anti Theft Backpack for School Simple Backpack for School Lightweight Casual Daypack Backpacks with USB Charging Port, Small Gym Backpack for Women Fits 15.6 Inch Laptop, Grey
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_41 <- data.frame()
+
+for (page in 1:5) {
+url41<- paste0("https://www.amazon.com/DEVONWIDE-Backpack-Lightweight-Backpacks-Charging/product-reviews/B0CMQLH33Y/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session41 <- bow(url41, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session41) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Anti Theft Backpack for School Simple Backpack for School Lightweight Casual Daypack Backpacks with USB Charging Port, Small Gym Backpack for Women Fits 15.6 Inch Laptop, Grey"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_41 <- rbind(product_41, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_41)
+
+```
+
+42ndproduct
+DEVONWIDE Anti Theft Backpack for School Simple Backpack for School Lightweight Casual Daypack Backpacks with USB Charging Port, Small Gym Backpack for Women Fits 15.6 Inch Laptop, Grey
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_42 <- data.frame()
+
+for (page in 1:5) {
+url42<- paste0("https://www.amazon.com/DEVONWIDE-Backpack-Lightweight-Backpacks-Charging/product-reviews/B0CMQLH33Y/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session42 <- bow(url42, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session42) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "DEVONWIDE Anti Theft Backpack for School Simple Backpack for School Lightweight Casual Daypack Backpacks with USB Charging Port, Small Gym Backpack for Women Fits 15.6 Inch Laptop, Grey"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_42 <- rbind(product_42, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_42)
+
+```
+43rdproduct
+
+Vans Unisex Kids Alumni Backpack Backpack (pack of 1)
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_43 <- data.frame()
+
+for (page in 1:5) {
+url43<- paste0("https://www.amazon.co.uk/Vans-Unisex-Backpack-ALUMNI-BACKPACK/product-reviews/B0B1VPCWZS/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session43 <- bow(url43, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session43) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Vans Unisex Kids Alumni Backpack Backpack (pack of 1)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_43 <- rbind(product_43, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_43)
+```
+
+44th
+Hype Backpack Rucksack Shoulder Bag - Black with White Speckle - for Boys and Girls, Women and Men - Black White Speckle
+```{r}
+
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_44 <- data.frame()
+
+for (page in 1:5) {
+url44<- paste0("https://www.amazon.co.uk/Hype-Backpack-Rucksack-Shoulder-Bag/product-reviews/B018O3RKL6/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session44 <- bow(url44, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session44) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Hype Backpack Rucksack Shoulder Bag - Black with White Speckle - for Boys and Girls, Women and Men - Black White Speckle"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_44 <- rbind(product_44, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_44)
+
+```
+
+45th
+OGIO Unisex's Renegade Pro Backpack, M
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_45 <- data.frame()
+
+for (page in 1:5) {
+url45<- paste0("https://www.amazon.co.uk/OGIO-Unisex-Renegade-Backpack-Black/product-reviews/B09TQPS7DF/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session45 <- bow(url45, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session45) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "OGIO Unisex's Renegade Pro Backpack, M"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_45 <- rbind(product_45, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_45)
+
+```
+
+46th
+
+OGIO Renegade RSS Ultimate Heavy-Duty Impact Resistant Laptop/Tablet Backpack
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_46 <- data.frame()
+
+for (page in 1:5) {
+url46<- paste0("https://www.amazon.co.uk/OGIO-Renegade-Ultimate-Heavy-Duty-Resistant/product-reviews/B00AZU4G00/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session46 <- bow(url46, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session46) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "OGIO Renegade RSS Ultimate Heavy-Duty Impact Resistant Laptop/Tablet Backpack"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_46 <- rbind(product_46, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+}
+
+#View(product_46)
+
+```
+
+
+47th
+Solo New York Leroy Carry-On Wheeled Duffle Bag, 49L Capacity, Grey, 56cm
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_47 <- data.frame()
+
+for (page in 1:5) {
+url47<- paste0("https://www.amazon.co.uk/Solo-New-York-Wheeled-Capacity/product-reviews/B07T27LZRP/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session47 <- bow(url47, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session47) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Solo New York Leroy Carry-On Wheeled Duffle Bag, 49L Capacity, Grey, 56cm"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_47 <- rbind(product_47, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_47)
+
+```
+
+48th
+Slazenger Wheel Reinforced Holdall Travel Storage Luggage Accessories Black One Size
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_48 <- data.frame()
+
+for (page in 1:5) {
+url48<- paste0("https://www.amazon.co.uk/Slazenger-Reinforced-Holdall-Storage-Accessories/product-reviews/B01LYYGQQU/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session48 <- bow(url48, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session48) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Slazenger Wheel Reinforced Holdall Travel Storage Luggage Accessories Black One Size"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_48 <- rbind(product_48, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_48)
+
+```
+
+49th
+Slazenger Unisex Medium Holdall
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_49 <- data.frame()
+
+for (page in 1:5) {
+url49<- paste0("https://www.amazon.co.uk/Slazenger-Holdall-Pockets-Storage-Accessories/product-reviews/B01M09E9PC/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session49 <- bow(url49, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session49) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Slazenger Unisex Medium Holdall"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_49 <- rbind(product_49, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_49)
+
+```
+
+50th
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product_50 <- data.frame()
+
+for (page in 1:5) {
+url50<- paste0("https://www.amazon.co.uk/Slazenger-Holdall-Pockets-Storage-Accessories/product-reviews/B01M09E9PC/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session50 <- bow(url50, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session50) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Slazenger Unisex Medium Holdall"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product_50 <- rbind(product_50, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+
+}
+
+#View(product_50)
+
+```
+
+
+```{r}
+
+all_Prods = data.frame();
+
+all_Prods <- rbind(all_Prods, product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8, product_9, product_10,
+                product_11, product_12, product_13, product_14, product_15, product_16, product_17, product_18, product_19, product_20,
+                product_21, product_22, product_23, product_24, product_25, product_26, product_27, product_28, product_29, product_30,
+                product_31, product_32, product_33, product_34, product_35, product_36, product_37, product_38, product_39, product_40,
+                product_41, product_42, product_43, product_44, product_45, product_46, product_47, product_48, product_49, product_50)
+
+#View(all_Prods)
+
+
+
 ```
