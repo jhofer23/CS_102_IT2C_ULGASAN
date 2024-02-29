@@ -1,0 +1,115 @@
+---
+title: "LabExer3"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+date: "2024-02-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+#install.packages("dplyr")
+# install.packages("rvest")
+# install.packages("polite")
+# install.packages("httr")
+# install.packages("RMySQL")
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+
+
+imdb_reviews<- data.frame()
+
+url <- "https://www.imdb.com/title/tt2975590/reviews?ref_=tt_urv"
+session <- bow(url, user_agent = "Educational Purpose")
+
+scrapeNodes <- function(selector) {
+  scrape(session) %>%
+    html_nodes(selector) %>%
+    html_text(trim = TRUE)
+}
+
+title_Movie <- scrapeNodes("a.subnav_heading")
+reviewer <- scrapeNodes("span.display-name-link")[1:10]
+scraped_Date <- scrapeNodes("span.review-date")[1:10]
+scraped_Rating <- scrapeNodes("span.rating-other-user-rating")[1:10]
+scraped_Review <- scrapeNodes("div.text.show-more__control")[1:10]
+scraped_TitleReview <- scrapeNodes("a.title")[1:10]
+
+imdb_reviews <- rbind(imdb_reviews, data.frame(
+  movie_title = rep(title_Movie, 10),
+  reviewer_name = reviewer,
+  review_date = scraped_Date,
+  review_rating = scraped_Rating,
+  review_content = scraped_Review,
+  review_title = scraped_TitleReview
+))
+
+imdb_reviews
+```
+
+
+
+
+```{r}
+library(dplyr,dbplyr)
+library(RMySQL)
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "imdb_r",
+                        user = "root",
+                        password = "")
+
+```
+
+
+
+
+```{r}
+dbListTables(connection)
+dbListFields(connection,"imdb_reviews")
+```
+
+```{r}
+review_data <- dbGetQuery(connection, "SELECT * FROM imdb_reviews")
+glimpse(review_data)
+
+```
+
+```{r}
+
+library(DBI)
+for (i in 1:nrow(imdb_reviews)) {
+  query <- paste0("INSERT INTO imdb_reviews (movie_title, reviewer_name, reviewer_date, reviewer_rating, review_context, review_title) VALUES ('",
+                  gsub("'", "''", imdb_reviews$movie_title[i]), "','",
+                  gsub("'", "''", imdb_reviews$reviewer_name[i]), "','",
+                  gsub("'", "''", imdb_reviews$reviewer_date[i]), "','",
+                  gsub("'", "''", imdb_reviews$reviewer_rating[i]), "','",
+                  gsub("'", "''", imdb_reviews$review_context[i]), "','",
+                  gsub("'", "''", imdb_reviews$review_title[i]), "')")
+  dbExecute(connection, query)
+}
+
+
+```
+
+
+
+
+
+```{r}
+
+review_data <- dbGetQuery(connection, "SELECT * FROM imdb_reviews")
+review_data[,c(2:7)]
+write.csv(review_data[,c(2:7)], "review_data.csv")
+
+```
+
