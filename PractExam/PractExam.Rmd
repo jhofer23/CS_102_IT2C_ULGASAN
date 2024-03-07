@@ -1,0 +1,203 @@
+---
+title: "PracticalExam"
+author: "Ulgasan"
+date: "2024-03-06"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load the built-in warpbreaks dataset.
+```{r}
+
+data("warpbreaks")
+
+```
+
+Find out, in a single command, which columns of warpbreaks are either numeric or
+integer. What are the data types of each column?
+----Answer----
+the "breaks" column of "warpbreak" are numerical
+the "wool" column of "warpbreak are factors  w/ 2 levels "A","B": 1 1 1 1 1 1 1 1 1 1 ...
+the "tension" column of "warpbreak" are alsp factors  w/ 3 levels "L","M","H": 1 1 1 1 1 1 1 1 1 2 ...
+
+```{r}
+str(warpbreaks)
+
+```
+
+2. How many observations does it have?
+---Answer---
+is does have "54" observations
+
+```{r}
+observations <- nrow(warpbreaks)
+observations
+
+```
+
+3. Is numeric a natural data type for the columns which are stored as such? Convert to
+integer when necessary.
+---Answer---
+Yes, numeric is a natural data type
+```{r}
+data("warpbreaks")
+warpbreaks$tension <- as.integer(warpbreaks$tension)
+warpbreaks$wool <- as.integer(warpbreaks$wool)
+warpbreaks$breaks <- as.integer(warpbreaks$breaks)
+str(warpbreaks)
+#View(warpbreaks)
+```
+4. Error messages in R sometimes report the underlying type of an object rather than the
+user-level class. Derive from the following code and error message what the
+underlying type. Explain what is the error all about. Do not just copy the error
+message that was displayed.
+---Answer---
+This mistake arises from the fact that the x object has character strings (such as "NA") that represent integers. R meets the "NA" string, which cannot be immediately converted to an integer, when attempting to force these character strings to numbers. Before converting the character vector to integers, you must handle the "NA" values appropriately, either by deleting them or substituting a suitable value.
+
+```{r}
+x <- c("1", "2", "3", "4", "5", "NA")
+as.integer(x)
+
+```
+
+Load the exampleFile.txt
+
+1. Read the complete file using readLines.
+
+```{r}
+
+#lines <- readLines("exampleFile.txt")
+#lines
+```
+
+2. Separate the vector of lines into a vector containing comments and a vector
+containing the data. Hint: use grepl.
+
+
+```{r}
+lines <- c("// Survey data. Created : 21 May 2013",
+           "// Field 1: Gender",
+           "// Field 2: Age (in years)",
+           "// Field 3: Weight (in kg)",
+           "M;28;81.3",
+           "male;45;",
+           "Female;17;57,2",
+           "fem.;64;62.8")
+
+comments <- lines[grepl("^//", lines)]
+
+data <- lines[!grepl("^//", lines)]
+
+
+print("Comments:")
+print(comments)
+print("Data:")
+print(data)
+
+
+```
+
+3. Extract the date from the first comment line and display on the screen “It was created
+data.”
+```{r}
+
+lines <- c("// Survey data. Created : 21 May 2013",
+           "// Field 1: Gender",
+           "// Field 2: Age (in years)",
+           "// Field 3: Weight (in kg)",
+           "M;28;81.3",
+           "male;45;",
+           "Female;17;57,2",
+           "fem.;64;62.8")
+
+first_comment <- lines[grepl("^//", lines)][1]
+date <- gsub("^.*Created : ", "", first_comment)
+
+
+cat("It was created on:", date)
+
+
+```
+
+
+4.Read the data into a matrix as follows.
+a. Split the character vectors in the vector containing data lines by semicolon (;)
+using strsplit.
+
+
+```{r}
+
+lines <- c("M;28;81.3",
+           "male;45;",
+           "Female;17;57,2",
+           "fem.;64;62.8")
+
+split_data <- lapply(strsplit(lines, ";"), function(x) trimws(x))
+
+matrix_data <- do.call(rbind, split_data)
+
+print(matrix_data)
+
+
+
+```
+
+b. Find the maximum number of fields retrieved by split. Append rows that are
+shorter with NA's.
+
+```{r}
+
+
+
+lines <- c("M;28;81.3",
+           "male;45;",
+           "Female;17;57,2",
+           "fem.;64;62.8")
+
+split_data <- lapply(strsplit(lines, ";"), function(x) trimws(x))
+
+
+max_fields <- max(lengths(split_data))
+
+
+for (i in seq_along(split_data)) {
+  if (length(split_data[[i]]) < max_fields) {
+    split_data[[i]] <- c(split_data[[i]], rep(NA, max_fields - length(split_data[[i]])))
+  }
+}
+
+
+matrix_data <- do.call(rbind, split_data)
+
+
+print(matrix_data)
+
+```
+
+c. Use unlist and matrix to transform the data to row-column format.
+
+```{r}
+split_data<-unlist(split_data)
+
+split_data
+
+dataMatrix <- matrix(split_data, nrow = length(data),byrow=TRUE)
+dataMatrix
+
+```
+
+ From comment lines 2-4, extract the names of the fields. Set these as
+colnames for the matrd.ix you just created.
+```{r}
+fieldNames <- c("Gender", "Age", "Weight")
+
+colnames(dataMatrix) <- fieldNames
+print(dataMatrix)
+
+
+```
