@@ -1,0 +1,553 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={LabExer4},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{LabExer4}
+\author{}
+\date{\vspace{-2.5em}2024-03-14}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'stringr' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(httr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'httr' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rvest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rvest' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{()}
+
+\CommentTok{\#initializing empty}
+\NormalTok{title }\OtherTok{\textless{}{-}}\NormalTok{ author }\OtherTok{\textless{}{-}}\NormalTok{ subject }\OtherTok{\textless{}{-}}\NormalTok{ abstract }\OtherTok{\textless{}{-}}\NormalTok{ meta }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"character"}\NormalTok{)}
+
+\NormalTok{base\_url }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}https://arxiv.org/search/?query=\%22Information+Extraction\%22\&searchtype=all\&source=header\&start=\textquotesingle{}}
+\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{0}\NormalTok{, }\AttributeTok{to =} \DecValTok{100}\NormalTok{, }\AttributeTok{by =} \DecValTok{50}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{(page }\ControlFlowTok{in}\NormalTok{ pages) \{}
+  
+\NormalTok{  url }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(base\_url, page)}
+
+\NormalTok{  article\_urls }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}p.list{-}title.is{-}inline{-}block\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}a[href\^{}="https://arxiv.org/abs"]\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{html\_attr}\NormalTok{(}\StringTok{\textquotesingle{}href\textquotesingle{}}\NormalTok{)}
+  
+  
+  \CommentTok{\#looping through all articles url}
+  \ControlFlowTok{for}\NormalTok{(article\_url }\ControlFlowTok{in}\NormalTok{ article\_urls) \{}
+  
+\NormalTok{    article\_page }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(article\_url)}
+
+    \CommentTok{\#Title}
+\NormalTok{    scrapedTitle }\OtherTok{\textless{}{-}}\NormalTok{ article\_page }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}h1.title.mathjax\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    scrapedTitle }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{\textquotesingle{}Title:\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, scrapedTitle)}
+\NormalTok{    title }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(title, scrapedTitle)}
+    
+    \CommentTok{\#Author}
+\NormalTok{    scrapedAuthor }\OtherTok{\textless{}{-}}\NormalTok{ article\_page }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}div.authors\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    scrapedAuthor }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{\textquotesingle{}Authors:\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{,scrapedAuthor)}
+\NormalTok{    author }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(author, scrapedAuthor)}
+    
+    \CommentTok{\#Subject}
+\NormalTok{    scrapedSubject }\OtherTok{\textless{}{-}}\NormalTok{ article\_page }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}span.primary{-}subject\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    subject }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(subject, scrapedSubject)}
+    
+    \CommentTok{\#Abstract}
+\NormalTok{    scrapedAbstract }\OtherTok{\textless{}{-}}\NormalTok{ article\_page }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}blockquote.abstract.mathjax\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    scrapedAbstract }\OtherTok{\textless{}{-}} \FunctionTok{sub}\NormalTok{(}\StringTok{\textquotesingle{}Abstract:\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{,scrapedAbstract)}
+\NormalTok{    abstract }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(abstract, scrapedAbstract)}
+    
+    \CommentTok{\#Meta}
+\NormalTok{    scrapedMeta }\OtherTok{\textless{}{-}}\NormalTok{ article\_page }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{\textquotesingle{}div.submission{-}history\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{    scrapedMeta }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s+\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{,scrapedMeta)}
+\NormalTok{    scrapedMeta }\OtherTok{\textless{}{-}} \FunctionTok{strsplit}\NormalTok{(scrapedMeta, }\StringTok{\textquotesingle{}[v1]\textquotesingle{}}\NormalTok{, }\AttributeTok{fixed =}\NormalTok{ T)}
+\NormalTok{    scrapedMeta }\OtherTok{\textless{}{-}}\NormalTok{ scrapedMeta[[}\DecValTok{1}\NormalTok{]][}\DecValTok{2}\NormalTok{] }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ unlist }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ str\_trim}
+\NormalTok{    meta }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(meta, scrapedMeta)}
+    
+    
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"Scraped article:"}\NormalTok{, }\FunctionTok{length}\NormalTok{(title), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Scraped article: 1 
+## Scraped article: 2 
+## Scraped article: 3 
+## Scraped article: 4 
+## Scraped article: 5 
+## Scraped article: 6 
+## Scraped article: 7 
+## Scraped article: 8 
+## Scraped article: 9 
+## Scraped article: 10 
+## Scraped article: 11 
+## Scraped article: 12 
+## Scraped article: 13 
+## Scraped article: 14 
+## Scraped article: 15 
+## Scraped article: 16 
+## Scraped article: 17 
+## Scraped article: 18 
+## Scraped article: 19 
+## Scraped article: 20 
+## Scraped article: 21 
+## Scraped article: 22 
+## Scraped article: 23 
+## Scraped article: 24 
+## Scraped article: 25 
+## Scraped article: 26 
+## Scraped article: 27 
+## Scraped article: 28 
+## Scraped article: 29 
+## Scraped article: 30 
+## Scraped article: 31 
+## Scraped article: 32 
+## Scraped article: 33 
+## Scraped article: 34 
+## Scraped article: 35 
+## Scraped article: 36 
+## Scraped article: 37 
+## Scraped article: 38 
+## Scraped article: 39 
+## Scraped article: 40 
+## Scraped article: 41 
+## Scraped article: 42 
+## Scraped article: 43 
+## Scraped article: 44 
+## Scraped article: 45 
+## Scraped article: 46 
+## Scraped article: 47 
+## Scraped article: 48 
+## Scraped article: 49 
+## Scraped article: 50 
+## Scraped article: 51 
+## Scraped article: 52 
+## Scraped article: 53 
+## Scraped article: 54 
+## Scraped article: 55 
+## Scraped article: 56 
+## Scraped article: 57 
+## Scraped article: 58 
+## Scraped article: 59 
+## Scraped article: 60 
+## Scraped article: 61 
+## Scraped article: 62 
+## Scraped article: 63 
+## Scraped article: 64 
+## Scraped article: 65 
+## Scraped article: 66 
+## Scraped article: 67 
+## Scraped article: 68 
+## Scraped article: 69 
+## Scraped article: 70 
+## Scraped article: 71 
+## Scraped article: 72 
+## Scraped article: 73 
+## Scraped article: 74 
+## Scraped article: 75 
+## Scraped article: 76 
+## Scraped article: 77 
+## Scraped article: 78 
+## Scraped article: 79 
+## Scraped article: 80 
+## Scraped article: 81 
+## Scraped article: 82 
+## Scraped article: 83 
+## Scraped article: 84 
+## Scraped article: 85 
+## Scraped article: 86 
+## Scraped article: 87 
+## Scraped article: 88 
+## Scraped article: 89 
+## Scraped article: 90 
+## Scraped article: 91 
+## Scraped article: 92 
+## Scraped article: 93 
+## Scraped article: 94 
+## Scraped article: 95 
+## Scraped article: 96 
+## Scraped article: 97 
+## Scraped article: 98 
+## Scraped article: 99 
+## Scraped article: 100 
+## Scraped article: 101 
+## Scraped article: 102 
+## Scraped article: 103 
+## Scraped article: 104 
+## Scraped article: 105 
+## Scraped article: 106 
+## Scraped article: 107 
+## Scraped article: 108 
+## Scraped article: 109 
+## Scraped article: 110 
+## Scraped article: 111 
+## Scraped article: 112 
+## Scraped article: 113 
+## Scraped article: 114 
+## Scraped article: 115 
+## Scraped article: 116 
+## Scraped article: 117 
+## Scraped article: 118 
+## Scraped article: 119 
+## Scraped article: 120 
+## Scraped article: 121 
+## Scraped article: 122 
+## Scraped article: 123 
+## Scraped article: 124 
+## Scraped article: 125 
+## Scraped article: 126 
+## Scraped article: 127 
+## Scraped article: 128 
+## Scraped article: 129 
+## Scraped article: 130 
+## Scraped article: 131 
+## Scraped article: 132 
+## Scraped article: 133 
+## Scraped article: 134 
+## Scraped article: 135 
+## Scraped article: 136 
+## Scraped article: 137 
+## Scraped article: 138 
+## Scraped article: 139 
+## Scraped article: 140 
+## Scraped article: 141 
+## Scraped article: 142 
+## Scraped article: 143 
+## Scraped article: 144 
+## Scraped article: 145 
+## Scraped article: 146 
+## Scraped article: 147 
+## Scraped article: 148 
+## Scraped article: 149 
+## Scraped article: 150
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{papers }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(title, author, subject, abstract, meta)}
+\NormalTok{end }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{()}
+\NormalTok{end }\SpecialCharTok{{-}}\NormalTok{ start }\CommentTok{\# Total Elapsed Time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    user  system elapsed 
+##    5.61    0.69  241.67
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Export the result}
+\FunctionTok{save}\NormalTok{(papers, }\AttributeTok{file =} \StringTok{"Arxiv\_Programming.RData"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(papers, }\AttributeTok{file =} \StringTok{"Arxiv papers on Programming.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#Inserting Dataframe to Database
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("DBI")}
+\CommentTok{\#install.packages("odbc")}
+\CommentTok{\#install.packages("RMySQL")}
+
+
+\FunctionTok{library}\NormalTok{(DBI)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'DBI' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(odbc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'odbc' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RMySQL)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'RMySQL' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr,dbplyr)}
+\NormalTok{connection }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(RMySQL}\SpecialCharTok{::}\FunctionTok{MySQL}\NormalTok{(),}
+                        \AttributeTok{dsn=}\StringTok{"MariaDB{-}connectionr"}\NormalTok{,}
+                        \AttributeTok{Server =} \StringTok{"localhost"}\NormalTok{,}
+                        \AttributeTok{dbname =} \StringTok{"2c\_ulgasan"}\NormalTok{, }
+                        \AttributeTok{user =} \StringTok{"root"}\NormalTok{, }
+                        \AttributeTok{password =} \StringTok{""}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{writing-table-to-database}{%
+\section{writing Table to Database}\label{writing-table-to-database}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{articles }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"Arxiv papers on Programming.csv"}\NormalTok{)}
+\FunctionTok{tail}\NormalTok{(articles)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       X
+## 145 145
+## 146 146
+## 147 147
+## 148 148
+## 149 149
+## 150 150
+##                                                                                                                                                      title
+## 145            Comparison of pipeline, sequence-to-sequence, and GPT models for end-to-end relation extraction: experiments with the rare disease use-case
+## 146                                                                      CMFDFormer: Transformer-based Copy-Move Forgery Detection with Continual Learning
+## 147                                                                                                           Similar Document Template Matching Algorithm
+## 148                                                                             Extracting Definienda in Mathematical Scholarly Articles with Transformers
+## 149                                                                        Taiyi: A Bilingual Fine-Tuned Large Language Model for Diverse Biomedical Tasks
+## 150 Joint multifractal analysis of air temperature, relative humidity and reference evapotranspiration in the middle zone of the Guadalquivir river valley
+##                                                                                                                                                                                                                                         author
+## 145                                                                                                                                                                                             Shashank Gupta, Xuguang Ai, Ramakanth Kavuluru
+## 146                                                                                                                                                        Yaqi Liu, Chao Xia, Song Xiao, Qingxiao Guan, Wenqian Dong, Yifan Zhang, Nenghai Yu
+## 147                                                                                                                                     Harshitha Yenigalla, Bommareddy Revanth Srinivasa Reddy, Batta Venkata Rahul, Nannapuraju Hemanth Raju
+## 148                                                                                                                                                                                     Shufan Jiang (VALDA), Pierre Senellart (DI-ENS, VALDA)
+## 149 Ling Luo, Jinzhong Ning, Yingwen Zhao, Zhijun Wang, Zeyuan Ding, Peng Chen, Weiru Fu, Qinyu Han, Guangtao Xu, Yunzhi Qiu, Dinghao Pan, Jiru Li, Hao Li, Wenduo Feng, Senbo Tu, Yuqi Liu, Zhihao Yang, Jian Wang, Yuanyuan Sun, Hongfei Lin
+## 150                                                                                                                                  A.B. Ariza-Villaverde, P. Pavon-Dominguez, R. Carmona-Cabezas, E. Gutierrez de Rave, F.J. Jimenez-Hornero
+##                                             subject
+## 145                Computation and Language (cs.CL)
+## 146 Computer Vision and Pattern Recognition (cs.CV)
+## 147 Computer Vision and Pattern Recognition (cs.CV)
+## 148                 Artificial Intelligence (cs.AI)
+## 149                Computation and Language (cs.CL)
+## 150 Atmospheric and Oceanic Physics (physics.ao-ph)
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               abstract
+## 145                                                                                                                                                                      End-to-end relation extraction (E2ERE) is an important and realistic application of natural language processing (NLP) in biomedicine. In this paper, we aim to compare three prevailing paradigms for E2ERE using a complex dataset focused on rare diseases involving discontinuous and nested entities. We use the RareDis information extraction dataset to evaluate three competing approaches (for E2ERE): NER $\\rightarrow$ RE pipelines, joint sequence to sequence models, and generative pre-trained transformer (GPT) models. We use comparable state-of-the-art models and best practices for each of these approaches and conduct error analyses to assess their failure modes. Our findings reveal that pipeline models are still the best, while sequence-to-sequence models are not far behind; GPT models with eight times as many parameters are worse than even sequence-to-sequence models and lose to pipeline models by over 10 F1 points. Partial matches and discontinuous entities caused many NER errors contributing to lower overall E2E performances. We also verify these findings on a second E2ERE dataset for chemical-protein interactions. Although generative LM-based methods are more suitable for zero-shot settings, when training data is available, our results show that it is better to work with more conventional models trained and tailored for E2ERE. More innovative methods are needed to marry the best of the both worlds from smaller encoder-decoder pipeline models and the larger GPT models to improve E2ERE. As of now, we see that well designed pipeline models offer substantial performance gains at a lower cost and carbon footprint for E2ERE. Our contribution is also the first to conduct E2ERE for the RareDis dataset.
+## 146                                                                                                                                                                                                                                                                        Copy-move forgery detection aims at detecting duplicated regions in a suspected forged image, and deep learning based copy-move forgery detection methods are in the ascendant. These deep learning based methods heavily rely on synthetic training data, and the performance will degrade when facing new tasks. In this paper, we propose a Transformer-style copy-move forgery detection network named as CMFDFormer, and provide a novel PCSD (Pooled Cube and Strip Distillation) continual learning framework to help CMFDFormer handle new tasks. CMFDFormer consists of a MiT (Mix Transformer) backbone network and a PHD (Pluggable Hybrid Decoder) mask prediction network. The MiT backbone network is a Transformer-style network which is adopted on the basis of comprehensive analyses with CNN-style and MLP-style backbones. The PHD network is constructed based on self-correlation computation, hierarchical feature integration, a multi-scale cycle fully-connected block and a mask reconstruction block. The PHD network is applicable to feature extractors of different styles for hierarchical multi-scale information extraction, achieving comparable performance. Last but not least, we propose a PCSD continual learning framework to improve the forgery detectability and avoid catastrophic forgetting when handling new tasks. Our continual learning framework restricts intermediate features from the PHD network, and takes advantage of both cube pooling and strip pooling. Extensive experiments on publicly available datasets demonstrate the good performance of CMFDFormer and the effectiveness of the PCSD continual learning framework.
+## 147                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 This study outlines a comprehensive methodology for verifying medical documents, integrating advanced techniques in template extraction, comparison, and fraud detection. It begins with template extraction using sophisticated region-of-interest (ROI) methods, incorporating contour analysis and edge identification. Pre-processing steps ensure template clarity through morphological operations and adaptive thresholding. The template comparison algorithm utilizes advanced feature matching with key points and descriptors, enhancing robustness through histogram-based analysis for accounting variations. Fraud detection involves the SSIM computation and OCR for textual information extraction. The SSIM quantifies structural similarity, aiding in potential match identification. OCR focuses on critical areas like patient details, provider information, and billing amounts. Extracted information is compared with a reference dataset, and confidence thresholding ensures reliable fraud detection. Adaptive parameters enhance system flexibility for dynamic adjustments to varying document layouts. This methodology provides a robust approach to medical document verification, addressing complexities in template extraction, comparison, fraud detection, and adaptability to diverse document structures.
+## 148                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     We consider automatically identifying the defined term within a mathematical definition from the text of an academic article. Inspired by the development of transformer-based natural language processing applications, we pose the problem as (a) a token-level classification task using fine-tuned pre-trained transformers; and (b) a question-answering task using a generalist large language model (GPT). We also propose a rule-based approach to build a labeled dataset from the LATEX source of papers. Experimental results show that it is possible to reach high levels of precision and recall using either recent (and expensive) GPT 4 or simpler pre-trained models fine-tuned on our task.
+## 149                                                                                                                                                                                                                                                                                                                                             Objective: Most existing fine-tuned biomedical large language models (LLMs) focus on enhancing performance in monolingual biomedical question answering and conversation tasks. To investigate the effectiveness of the fine-tuned LLMs on diverse biomedical NLP tasks in different languages, We present Taiyi, a bilingual fine-tuned LLM for diverse biomedical tasks. Materials and Methods: We first curated a comprehensive collection of 140 existing biomedical text mining datasets (102 English and 38 Chinese datasets) across over 10 task types. Subsequently, a two-stage strategy is proposed for supervised fine-tuning to optimize the model performance across varied tasks. Results: Experimental results on 13 test sets covering named entity recognition, relation extraction, text classification, question answering tasks demonstrate that Taiyi achieves superior performance compared to general LLMs. The case study involving additional biomedical NLP tasks further shows Taiyi's considerable potential for bilingual biomedical multi-tasking. Conclusion: Leveraging rich high-quality biomedical corpora and developing effective fine-tuning strategies can significantly improve the performance of LLMs within the biomedical domain. Taiyi shows the bilingual multi-tasking capability through supervised fine-tuning. However, those tasks such as information extraction that are not generation tasks in nature remain challenging for LLM-based generative approaches, and they still underperform the conventional discriminative approaches of smaller language models.
+## 150 Previous works have analysed the relationship existing between reference evapotranspiration (ET0) and other climatic variables under a one-at-a-time perturbation condition. However, due to the physical relationships between these climatic variables is advisable to study their joint influence on ET0. The box-counting joint multifractal algorithm describes the relations between variables using relevant information extracted from the data singularities. This work investigated the use of this algorithm to describe the simultaneous behaviour of ET0, calculated by means of Penman-Monteith (PM) equation, and relative humidity (RH) and air temperature (T), influencing on it in the middle zone of the Guadalquivir river valley, Andalusia, southern Spain. The studied cases were grouped according to the fractal dimension values, which were related to their probability of occurrence. The most likely cases were linked to smooth behaviour and weak dependence between variables, both circumstances were detected in the local multifractal analysis. For these cases, the rest of Penman Monteith (PM) equation variables, neither the T nor the RH, seemed to influence on ET0 determination, especially when low T values were involved. By contrast, the least frequent cases were those with variables showing high fluctuations and strong relationship between them. In these situations, when T is low, the ET0 is affected by the rest of PM equation variables. This fact confirmed T as main driver of ET0 because the higher T values the lesser influence of other climate variables on ET0. Joint multifractal analysis shows some limitations when it is applied to large number of variables, the results reported are promising and suggest the convenience of exploring the relationships between ET0 and other climatic variables not considered here with this framework such as wind speed and net radiation.
+##                                                                                      meta
+## 145 Wed, 22 Nov 2023 22:52:00 UTC (2,351 KB)[v2] Sun, 10 Mar 2024 01:11:20 UTC (2,212 KB)
+## 146 Wed, 22 Nov 2023 09:27:46 UTC (2,970 KB)[v2] Sun, 10 Mar 2024 11:50:39 UTC (1,689 KB)
+## 147                                                Tue, 21 Nov 2023 15:13:18 UTC (524 KB)
+## 148                                                 Tue, 21 Nov 2023 08:58:57 UTC (95 KB)
+## 149 Mon, 20 Nov 2023 08:51:30 UTC (1,156 KB)[v2] Tue, 19 Dec 2023 07:18:24 UTC (1,234 KB)
+## 150                                              Sat, 18 Nov 2023 04:31:26 UTC (1,263 KB)
+\end{verbatim}
+
+\#listing of tables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbExecute}\NormalTok{(connection, }\StringTok{"DROP TABLE IF EXISTS lab4\_articles"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbWriteTable}\NormalTok{(connection, }\StringTok{\textquotesingle{}lab4\_articles\textquotesingle{}}\NormalTok{, articles, }\AttributeTok{append =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{reading-data-from-table}{%
+\section{Reading data from table}\label{reading-data-from-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{review\_data }\OtherTok{\textless{}{-}} \FunctionTok{dbGetQuery}\NormalTok{(connection, }\StringTok{"SELECT * FROM 2c\_ulgasan.lab4\_articles"}\NormalTok{)}
+\FunctionTok{glimpse}\NormalTok{(review\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 150
+## Columns: 7
+## $ row_names <chr> "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12~
+## $ X         <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1~
+## $ title     <chr> "GroupContrast: Semantic-aware Self-supervised Representatio~
+## $ author    <chr> "Chengyao Wang, Li Jiang, Xiaoyang Wu, Zhuotao Tian, Bohao P~
+## $ subject   <chr> "Computer Vision and Pattern Recognition (cs.CV)", "Computat~
+## $ abstract  <chr> "Self-supervised 3D representation learning aims to learn ef~
+## $ meta      <chr> "Thu, 14 Mar 2024 17:59:59 UTC (1,513 KB)", "Thu, 14 Mar 202~
+\end{verbatim}
+
+\end{document}
